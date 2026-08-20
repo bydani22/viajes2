@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuaderno de viaje</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <span class="eyebrow">CUADERNO DE VIAJE · EDICIÓN DIGITAL</span>
+      <h1>Crea tu viaje</h1>
+      <p>Rellena los datos, añade lugares y selecciona todas tus fotos. El programa las comprimirá automáticamente para que el viaje no supere 20 MB.</p>
+    </header>
+
+    <section class="card">
+      <div class="step"><span>01</span><div><h2>Datos del viaje</h2><p>Información que aparecerá en la página.</p></div></div>
+      <div class="grid">
+        <label>Nombre del viaje
+          <input id="tripName" type="text" placeholder="Londres 2026">
+        </label>
+        <label>Fecha
+          <input id="tripDate" type="date">
+        </label>
+        <label>Slug para la URL
+          <input id="tripSlug" type="text" placeholder="londres-2026">
+          <small>Ejemplo: tuusuario.github.io/viajes/londres-2026/</small>
+        </label>
+        <label class="full">Descripción
+          <textarea id="tripDescription" rows="3" placeholder="Un viaje inolvidable..."></textarea>
+        </label>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="step"><span>02</span><div><h2>Lugares visitados</h2><p>Cada lugar aparecerá como una tarjeta.</p></div></div>
+      <div id="places"></div>
+      <button id="addPlace" class="secondary" type="button">+ Añadir lugar</button>
+    </section>
+
+    <section class="card">
+      <div class="step"><span>03</span><div><h2>Fotos</h2><p>Selecciona todas de golpe. Se comprimirán automáticamente.</p></div></div>
+
+      <label class="dropzone" for="photoInput">
+        <div class="camera">📸</div>
+        <strong>Toca para elegir fotos, o arrástralas aquí</strong>
+        <span>JPG, PNG, HEIC/HEIF si el navegador puede leerlos · máximo 20 MB</span>
+      </label>
+      <input id="photoInput" type="file" accept="image/*" multiple hidden>
+
+      <div class="photo-status">
+        <div><strong id="photoCount">0 fotos</strong><span id="photoSize">0 MB</span></div>
+        <div class="meter"><span id="meterBar"></span></div>
+        <small id="photoMessage">Todavía no has añadido fotos.</small>
+      </div>
+      <div id="preview" class="preview"></div>
+    </section>
+
+    <section class="card">
+      <div class="step"><span>04</span><div><h2>Generar</h2><p>Se creará un ZIP con la estructura lista para GitHub.</p></div></div>
+      <div class="result-info">
+        <p><strong>El ZIP tendrá esta estructura:</strong></p>
+        <pre id="structurePreview">londres-2026/
+├── index.html
+├── style.css
+├── script.js
+└── fotos/
+    ├── foto-001.webp
+    └── ...</pre>
+      </div>
+      <button id="generate" class="primary" type="button">Generar viaje y descargar ZIP</button>
+      <p id="generateMessage" class="generate-message"></p>
+    </section>
+
+    <section class="card instructions">
+      <div class="step"><span>05</span><div><h2>Publicarlo en GitHub Pages</h2></div></div>
+      <ol>
+        <li>Crea un repositorio llamado, por ejemplo, <code>viajes</code>.</li>
+        <li>Sube <code>index.html</code>, <code>style.css</code> y <code>script.js</code> de este generador a la raíz.</li>
+        <li>Para cada viaje, descomprime el ZIP dentro de una carpeta con su slug.</li>
+        <li>Activa GitHub Pages desde <strong>Settings → Pages</strong>, usando la rama <code>main</code>.</li>
+        <li>Tu viaje quedará en <code>https://TUUSUARIO.github.io/viajes/SLUG/</code>.</li>
+        <li>Esa URL es la que puedes grabar en tu etiqueta NFC.</li>
+      </ol>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
