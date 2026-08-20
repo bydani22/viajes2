@@ -1,0 +1,41 @@
+*{box-sizing:border-box}
+:root{--bg:#060c16;--surface:#101d34;--surface2:#152743;--line:#1f3355;--gold:#c9a568;--ink:#eef1f6;--muted:#8a96ac}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.55;
+background:
+  radial-gradient(1100px 550px at 88% -10%,#16294a 0%,transparent 60%),
+  radial-gradient(900px 500px at -10% 15%,#0f2038 0%,transparent 55%),
+  var(--bg);background-attachment:fixed}
+.trip{max-width:1100px;margin:auto;padding:40px 20px 80px}
+.trip-hero{position:relative;background:linear-gradient(160deg,var(--surface2),var(--surface) 70%);border:1px solid var(--line);border-radius:28px;padding:64px 42px;margin-bottom:44px;overflow:hidden;box-shadow:0 30px 60px -25px #000c}
+.trip-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(520px 260px at 92% 0%,#c9a56833,transparent 70%);pointer-events:none}
+.stamp{position:absolute;right:28px;top:28px;width:78px;height:78px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;transform:rotate(10deg);font:800 11px/1 'Inter',sans-serif;letter-spacing:.1em;color:var(--gold)}
+.trip-date{text-transform:uppercase;letter-spacing:.22em;color:var(--gold);font-size:12px;font-weight:700;margin:0 0 14px}
+.trip-hero h1{font:600 clamp(42px,7vw,80px)/1.02 'Playfair Display',Georgia,serif;margin:0 0 20px;color:#fff}
+.trip-hero p:last-child{max-width:640px;color:var(--muted);font-size:16.5px;line-height:1.75;margin:0}
+h2{font:600 30px 'Playfair Display',Georgia,serif;margin:46px 0 20px;color:#fff;display:flex;align-items:center;gap:14px}
+h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.places{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.place-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;transition:transform .25s ease,border-color .25s ease}
+.place-card:hover{transform:translateY(-3px);border-color:#33507f}
+.place-card span{color:var(--gold);font-size:18px}
+.place-card h3{margin:14px 0 6px;font:600 19px 'Playfair Display',Georgia,serif;color:#fff}
+.place-card p{color:var(--muted);line-height:1.6;margin:0}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,210px);gap:14px;justify-content:center;max-width:980px;margin:0 auto}
+.gallery figure{margin:0;aspect-ratio:1;overflow:hidden;border-radius:16px;border:1px solid var(--line);cursor:pointer;position:relative;background:var(--surface)}
+.gallery img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.gallery figure::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#000a,transparent 45%);opacity:0;transition:opacity .3s ease}
+.gallery figure:hover img{transform:scale(1.07)}
+.gallery figure:hover::after{opacity:1}
+footer{text-align:center;color:var(--muted);margin-top:60px;font-size:12px;letter-spacing:.05em}
+.lightbox{position:fixed;inset:0;background:#050a13ee;backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:999;padding:30px}
+.lightbox.open{display:flex}
+.lightbox-inner{display:flex;flex-direction:column;align-items:center;gap:14px;max-width:min(92vw,1100px);max-height:88vh}
+.lightbox img{max-width:100%;max-height:78vh;object-fit:contain;border-radius:12px;box-shadow:0 30px 70px #000a;background:#000}
+.lightbox-counter{color:var(--muted);font-size:13px;letter-spacing:.08em}
+.lb-btn{position:fixed;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:#0f1d33cc;color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s;z-index:1000}
+.lb-btn:hover{background:var(--gold);color:#0b1626;border-color:var(--gold)}
+.lb-prev{left:18px}.lb-next{right:18px}
+.lb-close{position:fixed;top:18px;right:18px;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:#0f1d33cc;color:#fff;font-size:18px;cursor:pointer;z-index:1000}
+.lb-close:hover{background:var(--gold);color:#0b1626;border-color:var(--gold)}
+@media(max-width:640px){.trip-hero{padding:44px 22px}.stamp{display:none}.lb-prev{left:8px}.lb-next{right:8px}.lb-btn{width:40px;height:40px}.gallery{grid-template-columns:repeat(auto-fill,150px)}}
